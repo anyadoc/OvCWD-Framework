@@ -9,8 +9,8 @@ data_github <- "https://raw.githubusercontent.com/anyadoc/OvCWD-Framework/master
 data <- read_csv(data_github)
 #data <- read.csv("data/deerpopdyMontcalmCountyMI_10ite1Feb20.csv", header = TRUE)
 data = data[-1,]                  # deletes the very 1st row, which is the user provided information for setup
-new_data <- add_column(data, iteration = rep(1:params$iterations, each = 25))  # number of model iterations 10, number of years per iteration - 26 #tibble
-new_data1 <- add_column(new_data, year = rep(c(1:25), params$iterations))     # 26 years per iteration
+new_data <- add_column(data, iteration = rep(1:10, each = 25))  # number of model iterations 10, number of years per iteration - 26 #tibble
+new_data1 <- add_column(new_data, year = rep(c(1:25), 10))     # 26 years per iteration
 #AgeSexComposition using one iteration
 agesexdata_1 <- subset(new_data1, iteration == 1)              # choose which iteration
 agesexdata_1$mfp <- agesexdata_1$posth_mf / agesexdata_1$posth_total
