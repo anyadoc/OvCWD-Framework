@@ -1,5 +1,6 @@
 library(ggplot2)
 library (tibble)
+library (tidyverse)
 windowsFonts("Arial" = windowsFont("Arial"))
 data_github <- "https://raw.githubusercontent.com/anyadoc/OvCWD-Framework/master/saMontcalmCountyMI_10ite1Feb20.csv"
 data <- read_csv(data_github)
