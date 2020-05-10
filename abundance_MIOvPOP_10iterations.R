@@ -1,9 +1,9 @@
-library (tidyr,tidyverse)
+library (tidyr)
+library (tidyverse)
 library (dplyr)
 library (cowplot)
 library (tibble)
 library (ggplot2)
-library (tibble)
 library (kableExtra)
 
 data_github <- "https://raw.githubusercontent.com/anyadoc/OvCWD-Framework/master/saMontcalmCountyMI_10ite1Feb20.csv"
@@ -19,5 +19,5 @@ iteration <- c(1:10)
 mydata3 <- cbind(MIDNR_est,MIOvPOP,iteration)
 mydata_df <- as.data.frame(mydata3)
 mydata3_long <- gather(mydata_df, data_source, deer_abundance, MIDNR_est:MIOvPOP, factor_key=TRUE)
-comp_N_MontcalmMI <- ggplot(mydata3_long, aes(x=iteration, y=deer_abundance, color=data_source)) + scale_y_continuous(limits=c(30000, 65000))+ geom_point(size=2, alpha=0.5, position = "jitter") + geom_smooth(method=lm, se=FALSE, fullrange=TRUE) + stat_ellipse(geom = "polygon", alpha = 0.1, type = "t", aes(fill = data_source)) + scale_x_continuous(breaks=c(10)) + xlab("iterations") + ylab("deer abundance\n") + theme_cowplot(12)
+comp_N_MontcalmMI <- ggplot(mydata3_long, aes(x=iteration, y=deer_abundance, color=data_source)) + scale_y_continuous(limits=c(30000, 65000))+ geom_point(size=2, alpha=0.5, position = "jitter") + stat_ellipse(geom = "polygon", alpha = 0.1, type = "norm", aes(fill = data_source)) + scale_x_continuous(breaks=c(10)) + xlab("iterations") + ylab("deer abundance\n") + theme(text=element_text(family="Arial", face="bold", size=12)) + theme_cowplot(12)
 comp_N_MontcalmMI
